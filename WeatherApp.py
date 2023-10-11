@@ -119,6 +119,14 @@ canvas.pack()
 # Place the image on the Canvas
 canvas.create_image(0, 0, anchor=tk.NW, image=bg_photo)
 
+def center_window(window):
+    window.update_idletasks()
+    width = window.winfo_width()
+    height = window.winfo_height()
+    x = (window.winfo_screenwidth() // 2) - (width // 2)
+    y = (window.winfo_screenheight() // 2) - (height // 2)
+    window.geometry('{}x{}+{}+{}'.format(width, height, x, y))
+
 # Create and place a label and an entry field for entering the city name inside the Canvas
 city_label = tk.Label(canvas, text="Enter the city name:")
 city_label.place(x=20, y=20)
@@ -134,6 +142,24 @@ get_weather_button.place(x=20, y=80)
 # Create an "Ask Again" button to request weather information for another city
 ask_again_button = tk.Button(canvas, text="Ask Again", command=ask_again)
 ask_again_button.place(x=20, y=110)
+
+# Set the minimum and maximum window size to make it fixed
+width = 300  # Your desired width
+height = 300  # Your desired height
+root.minsize(width, height)
+root.maxsize(width, height)
+
+# Load the new logo image
+new_logo = tk.PhotoImage(file="Images/logoTemperature.png")
+
+# Set the new logo as the app's icon
+root.iconphoto(True, new_logo)
+
+
+
+# Call the center_window function to center the window
+center_window(root)
+
 
 
 # Start the GUI event loop
