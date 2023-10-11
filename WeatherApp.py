@@ -6,6 +6,7 @@ from tkinter import messagebox
 from PIL import Image, ImageTk  # Import PIL modules for image handling
 from ttkthemes import ThemedTk
 import threading
+import multiprocessing
 
 # Create an object of the ToastNotifier class
 n = ToastNotifier()
@@ -56,8 +57,22 @@ def get_coordinates(city_name):
             return None, None
     except requests.exceptions.RequestException as e:
         return None, None
+    
+
+def show_notification(city_name, description, temperature_celsius, temperature_fahrenheit):
+    result = f"Weather in {city_name}:\n{description.capitalize()}\nTemperature: {temperature_celsius}°C ({temperature_fahrenheit}°F)"
+    n.show_toast("Live Weather Update", result, duration=50)
+
+notification_process = None
 
 def get_weather_info():
+    global notification_process  # Use the global notification_process variable
+    
+    # Check if a notification process is already running
+    if notification_process and notification_process.is_alive():
+        messagebox.showinfo("Notification in Progress", "A weather notification is already being displayed.")
+        return
+    
     city_name = city_entry.get()
     
     # Get the coordinates using geocoding
@@ -68,22 +83,17 @@ def get_weather_info():
         weather_data = get_weather_data(latitude, longitude)
         
         if isinstance(weather_data, dict) and "main" in weather_data and "weather" in weather_data:
-            temperature_celsius = round(weather_data["main"]["temp"])  # Round to the nearest whole number
-            temperature_fahrenheit = round((temperature_celsius * 9/5) + 32)  # Convert to Fahrenheit
-            
+            temperature_celsius = round(weather_data["main"]["temp"])
+            temperature_fahrenheit = round((temperature_celsius * 9/5) + 32)
             description = weather_data["weather"][0]["description"]
             
-            result = f"Weather in {city_name}:\n{description.capitalize()}\nTemperature: {temperature_celsius}°C ({temperature_fahrenheit}°F)"
-            
-            n.show_toast("Live Weather Update", result, duration=30)
+            # Show notification in a separate process to avoid blocking the main thread
+            notification_thread = threading.Thread(target=show_notification, args=(city_name, description, temperature_celsius, temperature_fahrenheit))
+            notification_thread.start()
         else:
             messagebox.showerror("Weather Data Not Found", f"Unable to retrieve weather data for {city_name}.")
     else:
-        messagebox.showerror("Geocoding Error", f"Unable to retrieve coordinates for {city_name}.")
-
- # Create a thread to fetch weather information
-    weather_thread = threading.Thread(target=weather_thread)
-    weather_thread.start()
+        messagebox.showerror("Geocoding Error", f"Unable to retrieve coordinates for {city_name}")
 
 
 
