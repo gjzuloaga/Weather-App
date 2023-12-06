@@ -21,10 +21,9 @@ Follow these steps to set up and use the WorldWeather app:
     ```
 
 2. **Install Dependencies:**
-    - Ensure you have the necessary dependencies installed (e.g., Python, Flask).
-    ```bash
-    pip install -r requirements.txt
-    ```
+    - Ensure you have the necessary dependencies installed
+
+
 
 3. **Configure API Key:**
     - Sign up for a weather API key (e.g., OpenWeatherMap) and update the `config.py` file with your API key.
@@ -61,7 +60,7 @@ We welcome contributions! If you have ideas for new features or improvements, pl
 - etc.
 
 
-Stay informed about the weather around the world with WorldWeather! ☀️🌨️
+Stay informed about the weather around the world with the Weather App! ☀️🌨️
 
 
 
