@@ -35,6 +35,7 @@ Follow these steps to set up and use the WorldWeather app:
     ```
 
 5. **Access the App:**
+   
 ![Screenshot 2023-11-05 201612](https://github.com/gjzuloaga/Weather-App/assets/119768381/e923505c-ed03-4a9d-aaa0-b1fde0dbc79a)
 
 ## Usage
