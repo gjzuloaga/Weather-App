@@ -1,4 +1,4 @@
-# WorldWeather App 🌍🌦️
+# Weather App 🌍🌦️
 
 Welcome to the WeatherApp, your go-to application for retrieving real-time temperature information for cities across the globe. This app allows users to inquire about the temperature in any city, with specific instructions for specifying American cities.
 
