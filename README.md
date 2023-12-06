@@ -55,9 +55,9 @@ We welcome contributions! If you have ideas for new features or improvements, pl
 ## Acknowledgments
 
 - Thanks to the weather API providers for their valuable data.
-- Inspiration from other weather applications.
 - Dedicated to Santorio Santorio, the pioneering inventor of the thermometer, whose contributions laid the foundation for understanding temperature.
-- etc.
+
+![473643_1_En_1_Fig5_HTML](https://github.com/gjzuloaga/Weather-App/assets/119768381/dc69f00e-9a05-4eae-b837-7819ccef3b7d)
 
 
 Stay informed about the weather around the world with the Weather App! ☀️🌨️
