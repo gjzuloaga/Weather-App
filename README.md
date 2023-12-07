@@ -49,7 +49,7 @@ Follow these steps to set up and use the WorldWeather app:
 
 ## Contributing
 
-We welcome contributions! If you have ideas for new features or improvements, please follow our [contribution guidelines](CONTRIBUTING.md).
+I welcome contributions!
 
 
 ## Acknowledgments
